@@ -16,36 +16,44 @@ public enum Category
     Fire,
     Ice,
     Lightning,
-    Poison
+    Poison,
+    Other
 }
 
 public class SpellController
 {
 
     protected string keyword;
-    protected float manaCost;
-    protected float duration;
-    protected float range;
-    protected Status statusEffect;
-    protected float statusEffectDuration;
-    protected Category category;
+    protected float damage = 1f;
+    protected float manaCost = 10f;
+    protected float duration = 5f;
+    protected float range = 10f;
+    protected Status statusEffect = Status.None;
+    protected float statusEffectDuration = 0f;
+    protected Category category = Category.Other;
     protected AudioSource spellSound;
-    protected PlayerController _user;
-    protected PlayerSpellCastingController _spellCastingController;
+    protected PlayerController user;
+    protected PlayerSpellCastingController spellCastingController;
+
+    public string Keyword => keyword;
+
+    public float Damage => damage;
+
+    public Status StatusEffect => statusEffect;
+
+    public float StatusEffectDuration => statusEffectDuration;
 
     public PlayerController User
     {
-        get => _user;
-        set => _user = value;
+        get => user;
+        set => user = value;
     }
 
     public PlayerSpellCastingController SpellCastingController
     {
-        get => _spellCastingController;
-        set => _spellCastingController = value;
+        get => spellCastingController;
+        set => spellCastingController = value;
     }
-
-    public string Keyword => keyword;
 
     public void Cast()
     {

@@ -17,20 +17,21 @@ public class IgnisSpectrisController : SpellController
 
     protected override void ExecuteSpellEffect()
     {
-        // Carrega a prefab WillOWisp dos recursos
-        GameObject willOWispPrefab = Resources.Load<GameObject>("SpellEffectPrefabs/WillOWisp");
-        
-        if (willOWispPrefab != null)
+        GameObject wispPrefab = Resources.Load<GameObject>("SpellEffectPrefabs/Wisp");
+
+        if (wispPrefab != null)
         {
             Vector3 spawnPosition = User.transform.position + User.transform.forward * 2f;
 
-            GameObject willOWispInstance = Object.Instantiate(willOWispPrefab, spawnPosition, User.transform.rotation);
+            GameObject willOWispInstance = Object.Instantiate(wispPrefab, spawnPosition, User.transform.rotation);
+
+            willOWispInstance.GetComponent<WispController>().SpellController = this;
 
             Object.Destroy(willOWispInstance, duration);
         }
         else
         {
-            Debug.LogError("WillOWisp prefab not found in Resources/SpellEffectPrefabs/");
+            Debug.LogError("Wisp prefab not found in Resources/SpellEffectPrefabs/");
         }
     }
 

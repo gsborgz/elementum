@@ -24,17 +24,11 @@ public class PlayerListenerController : ListenerController
 
         foreach (var spell in spellCastingController.AvailableSpells)
         {
-            Debug.Log(spell.Keyword);
             if (spell != null && !string.IsNullOrEmpty(spell.Keyword))
             {
-                keywords.Add(spell.Keyword, () => ExecuteSpell(spell));
+                keywords.Add(spell.Keyword, () => spell.Cast());
             }
         }
-    }
-
-    private void ExecuteSpell(SpellController spell)
-    {
-        spell.Cast();
     }
 
 }

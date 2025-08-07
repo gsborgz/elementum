@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8628189660290971522}
   - component: {fileID: 7496639427735563655}
   m_Layer: 0
-  m_Name: WillOWisp
+  m_Name: Wisp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

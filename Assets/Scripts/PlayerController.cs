@@ -26,9 +26,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isWalking = false;
     [SerializeField] private bool isSprinting = false;
     [SerializeField] private bool isJumping = false;
-    [SerializeField] private bool _isCrouching = false;
+    [SerializeField] private bool isCrouching = false;
     [SerializeField] private bool hasSomethingAbove = false;
-    [SerializeField] private bool _isCastingSpell = false;
+    [SerializeField] private bool isCastingSpell = false;
 
     [Header("Audio Settings")]
     [SerializeField] private AudioSource footstepSound;
@@ -43,14 +43,14 @@ public class PlayerController : MonoBehaviour
 
     public bool IsCrouching
     {
-        get => _isCrouching;
-        private set => _isCrouching = value;
+        get => isCrouching;
+        private set => isCrouching = value;
     }
 
     public bool IsCastingSpell
     {
-        get => _isCastingSpell;
-        set => _isCastingSpell = value;
+        get => isCastingSpell;
+        set => isCastingSpell = value;
     }
 
     public float Health => health;
@@ -91,7 +91,14 @@ public class PlayerController : MonoBehaviour
     public void ApplyStatus(Status newStatus, float duration)
     {
         status = newStatus;
-        
+
+        switch (newStatus)
+        {
+            case Status.Burning:
+                StartCoroutine(TakeDamageOverTime(1f, duration));
+                break;
+        }
+
         if (duration > 0)
         {
             StartCoroutine(RemoveStatusAfterDuration(duration));

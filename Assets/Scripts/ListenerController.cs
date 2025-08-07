@@ -7,7 +7,7 @@ using UnityEngine.Windows.Speech;
 public class ListenerController : MonoBehaviour {
 
     [Header("Speech Recognition Settings")]
-    [SerializeField] private ConfidenceLevel minimumConfidence = ConfidenceLevel.Low;
+    [SerializeField] private ConfidenceLevel minimumConfidence = ConfidenceLevel.Medium;
     
     private KeywordRecognizer keywordRecognizer;
     protected readonly Dictionary<string, Action> keywords = new();
@@ -32,8 +32,7 @@ public class ListenerController : MonoBehaviour {
 
     private void OnKeywordsRecognized(PhraseRecognizedEventArgs args)
     {
-        Debug.Log("Opa");
-        if (args.confidence >= minimumConfidence)
+        if (args.confidence <= minimumConfidence)
         {
             if (keywords.TryGetValue(args.text, out Action keywordAction))
             {
