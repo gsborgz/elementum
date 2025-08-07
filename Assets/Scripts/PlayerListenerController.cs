@@ -24,6 +24,7 @@ public class PlayerListenerController : ListenerController
 
         foreach (var spell in spellCastingController.AvailableSpells)
         {
+            Debug.Log(spell.Keyword);
             if (spell != null && !string.IsNullOrEmpty(spell.Keyword))
             {
                 keywords.Add(spell.Keyword, () => ExecuteSpell(spell));
@@ -33,7 +34,6 @@ public class PlayerListenerController : ListenerController
 
     private void ExecuteSpell(SpellController spell)
     {
-        spellCastingController.CurrentSpell = spell;
         spell.Cast();
     }
 

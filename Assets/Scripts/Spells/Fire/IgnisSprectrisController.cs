@@ -8,10 +8,11 @@ public class IgnisSpectrisController : SpellController
     {
         keyword = "Ignis Spectris";
         manaCost = 20f;
-        castTime = 1.5f;
         duration = 5f;
-        cooldown = 10f;
         range = 15f;
+        statusEffect = Status.Burning;
+        statusEffectDuration = 10f;
+        category = Category.Fire;
     }
 
     protected override void ExecuteSpellEffect()

@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 using Unity.VisualScripting;
 
-public enum Status {
+public enum Status
+{
     None,
     Burning,
     Frozen,
@@ -10,16 +11,25 @@ public enum Status {
     Stunned
 }
 
+public enum Category
+{
+    Fire,
+    Ice,
+    Lightning,
+    Poison
+}
+
 public class SpellController
 {
 
     protected string keyword;
     protected float manaCost;
-    protected float castTime;
     protected float duration;
-    protected float cooldown;
-    protected AudioSource spellSound;
     protected float range;
+    protected Status statusEffect;
+    protected float statusEffectDuration;
+    protected Category category;
+    protected AudioSource spellSound;
     protected PlayerController _user;
     protected PlayerSpellCastingController _spellCastingController;
 
@@ -44,7 +54,7 @@ public class SpellController
             User.ReduceMana(manaCost);
             User.IsCastingSpell = true;
 
-            SpellCastingController.StartSpellCoroutine(FinishCasting());
+            ExecuteSpellEffect();
         }
         else
         {
@@ -52,15 +62,6 @@ public class SpellController
         }
     }
 
-    private IEnumerator FinishCasting()
-    {
-        yield return new WaitForSeconds(castTime);
-
-        User.IsCastingSpell = false;
-
-        ExecuteSpellEffect();
-    }
-
-    protected virtual void ExecuteSpellEffect() {}
+    protected virtual void ExecuteSpellEffect() { }
 
 }

@@ -4,14 +4,7 @@ public class PlayerSpellCastingController : MonoBehaviour
 {
     private PlayerController playerController;
     private PlayerListenerController listenerController;
-    private SpellController currentSpell;
     private SpellController[] availableSpells;
-
-    public SpellController CurrentSpell
-    {
-        get => currentSpell;
-        set => currentSpell = value;
-    }
 
     public SpellController[] AvailableSpells
     {
