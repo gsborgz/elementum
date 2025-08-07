@@ -11,13 +11,7 @@ public class PlayerListenerController : ListenerController
 
     private void Start()
     {
-        // Adiciona as palavras-chave após a inicialização completa
         AddKeywords();
-
-        if (spellCastingController.AvailableSpells != null)
-        {
-            Debug.LogError("No available spells found in PlayerListenerController!");
-        }
     }
 
     private void AddKeywords()
