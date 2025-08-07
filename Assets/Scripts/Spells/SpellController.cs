@@ -23,7 +23,7 @@ public enum Category
 public class SpellController
 {
 
-    protected string keyword;
+    protected string[] keywords;
     protected float damage = 1f;
     protected float manaCost = 10f;
     protected float duration = 5f;
@@ -35,7 +35,7 @@ public class SpellController
     protected PlayerController user;
     protected PlayerSpellCastingController spellCastingController;
 
-    public string Keyword => keyword;
+    public string[] Keywords => keywords;
 
     public float Damage => damage;
 

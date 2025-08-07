@@ -6,7 +6,7 @@ public class IgnisSpectrisController : SpellController
 
     public IgnisSpectrisController()
     {
-        keyword = "Ignis Spectris";
+        keywords = new[] { "Ignis Spectris", "IgnisSpectris", "Ignispectris", "Iguinis Ispectris", "Inis Spectris", "Inispectris" };
         manaCost = 20f;
         duration = 5f;
         range = 15f;

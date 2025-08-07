@@ -7,8 +7,8 @@ using UnityEngine.Windows.Speech;
 public class ListenerController : MonoBehaviour {
 
     [Header("Speech Recognition Settings")]
-    [SerializeField] private ConfidenceLevel minimumConfidence = ConfidenceLevel.Medium;
-    
+    [SerializeField] private ConfidenceLevel minimumConfidence = ConfidenceLevel.High;
+
     private KeywordRecognizer keywordRecognizer;
     protected readonly Dictionary<string, Action> keywords = new();
 

@@ -24,9 +24,12 @@ public class PlayerListenerController : ListenerController
 
         foreach (var spell in spellCastingController.AvailableSpells)
         {
-            if (spell != null && !string.IsNullOrEmpty(spell.Keyword))
+            if (spell != null && spell.Keywords != null && spell.Keywords.Length > 0)
             {
-                keywords.Add(spell.Keyword, () => spell.Cast());
+                foreach (var keyword in spell.Keywords)
+                {
+                    keywords.Add(keyword, () => spell.Cast());
+                }
             }
         }
     }
