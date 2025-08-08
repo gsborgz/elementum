@@ -60,7 +60,6 @@ public class SpellController
         if (User.Mana >= manaCost)
         {
             User.ReduceMana(manaCost);
-            User.IsCastingSpell = true;
 
             ExecuteSpellEffect();
         }
